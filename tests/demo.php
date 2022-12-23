@@ -199,6 +199,84 @@ class Demo2
         return 'dummy';
     }
 
+    /**
+     * Docblock func_9
+     *
+     * Contain more than 10 attributes
+     *
+     * @return void comment return value
+     */
+    private function func_9(
+        bool $arg1,
+        ?Demo3 $arg2,
+        string $arg3,
+        string $arg4,
+        string $arg5,
+        ?string $arg6,
+        string $arg7,
+        string $arg8,
+        string $arg9,
+        string $arg10,
+        string $arg11,
+        string $arg12,
+        string $arg13 = 'test',
+        string $arg14 = 'test2'
+    ) {
+        return 'dummy';
+    }
+
+    /**
+     * Docblock func_10
+     *
+     * Contain more than 10 attributes with return
+     *
+     * @return array comment return value
+     */
+    private function func_10(
+        bool $arg1,
+        ?Demo3 $arg2,
+        string $arg3,
+        string $arg4,
+        string $arg5,
+        ?string $arg6,
+        string $arg7,
+        string $arg8,
+        string $arg9,
+        string $arg10,
+        string $arg11,
+        string $arg12,
+        string $arg13 = 'test',
+        string $arg14 = 'test2'
+    ): array {
+        return 'dummy';
+    }
+
+    /**
+     * Docblock func_11
+     *
+     * Contain more than 10 attributes with return and { on line
+     *
+     * @return array comment return value
+     */
+    private function func_11(
+        bool $arg1,
+        ?Demo3 $arg2,
+        string $arg3,
+        string $arg4,
+        string $arg5,
+        ?string $arg6,
+        string $arg7,
+        string $arg8,
+        string $arg9,
+        string $arg10,
+        string $arg11,
+        string $arg12,
+        string $arg13 = 'test',
+        string $arg14 = 'test2'
+    ): array
+    {
+        return 'dummy';
+    }
 }
 
 // [NOT FOLDED]: abstract class header w/ docblock
