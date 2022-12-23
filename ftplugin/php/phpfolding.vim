@@ -408,9 +408,9 @@ function! s:FindPureBlockStart(startPattern) " {{{
 	" This function can match the line its on *again* if the cursor was
 	" restored.. hence we search twice if needed..
 	let currentLine = line('.')
-	let line = search(a:startPattern . '.*\(\%[\n].*\)\{,10\}{', 'bW')
+	let line = search(a:startPattern . '.*\(\%[\n][^)]*\)\+)\(\%[\n][^{]*\)*{', 'bW')
 	if currentLine == line
-		let line = search(a:startPattern . '.*\(\%[\n].*\)\{,10\}{', 'bW')
+		let line = search(a:startPattern . '.*\(\%[\n][^)]*\)\+)\(\%[\n][^{]*\)*{', 'bW')
 	endif
 	return line
 endfunction
