@@ -181,13 +181,13 @@ function! s:PHPCustomFolds() " {{{
 	"       'g:searchEmptyLinesPostfixing'..
 
 	" Fold function with PhpDoc (function foo() {})
-	call s:PHPFoldPureBlock('^\(public\|private\|protected\|static\|\s\)*function\s\+[A-Za-z_][A-Za-z0-9_]*\s*(', s:FOLD_WITH_PHPDOC)
+	call s:PHPFoldPureBlock('^\(public\|private\|protected\|static\|final\|\s\)*function\s\+[A-Za-z_][A-Za-z0-9_]*\s*(', s:FOLD_WITH_PHPDOC)
 
 	" Fold abstract function with PhpDoc
-	call s:PHPFoldProperties('^\s*abstract\(public\|private\|protected\|static\|\s\)*function\s\+[A-Za-z_][A-Za-z0-9_]*\s*(', ";", s:FOLD_WITH_PHPDOC, 1, 1)
+	call s:PHPFoldProperties('^\s*abstract\(public\|private\|protected\|static\|final\|\s\)*function\s\+[A-Za-z_][A-Za-z0-9_]*\s*(', ";", s:FOLD_WITH_PHPDOC, 1, 1)
 
 	" Fold class properties with PhpDoc (public $foo = null;)
-	call s:PHPFoldProperties('^\s*\(static\)\?\s*\(public\|private\|protected\|var\)\s*\(static\)\?\s*\$', ";", s:FOLD_WITH_PHPDOC, 1, 1)
+	call s:PHPFoldProperties('^\s*\(static\)\?\s*\(public\|private\|protected\|var\|final\)\s*\(static\)\?\s*\$', ";", s:FOLD_WITH_PHPDOC, 1, 1)
 
 	if !g:DisablePHPFoldingClass
 		" Fold class without PhpDoc (class foo {})
@@ -408,9 +408,9 @@ function! s:FindPureBlockStart(startPattern) " {{{
 	" This function can match the line its on *again* if the cursor was
 	" restored.. hence we search twice if needed..
 	let currentLine = line('.')
-	let line = search(a:startPattern . '.*\(\%[\n][^)]*\)\+)\(\%[\n][^{]*\)*{', 'bW')
+	let line = search(a:startPattern . '.*\(\%[\n][^{]*\)\+{', 'bW')
 	if currentLine == line
-		let line = search(a:startPattern . '.*\(\%[\n][^)]*\)\+)\(\%[\n][^{]*\)*{', 'bW')
+		let line = search(a:startPattern . '.*\(\%[\n][^{]*\)\+{', 'bW')
 	endif
 	return line
 endfunction
